@@ -107,14 +107,30 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+const uniquifyArray = words => {
+  if (!words.length) return null;
+  let uniqueArr = [];
+      for (let word of words) {
+        if (!uniqueArr.includes(word)) uniqueArr.push(word);
+      }
+      return uniqueArr;
+}
 
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(someArr, someWord) {
+  if (arr.length === 0) return null;
+  let doesExist = false;
+  for (let i = 0; i < someArr.lenght; i++) {
+    if (someArr[i] === someWord) {
+      doesExist = true;
+    }
+  }
+return doesExist;
+}
 
 
 
@@ -133,7 +149,13 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let count = 0;
+  for (let el of arr) {
+    if ( el === word) count++;
+  }
+  return count;
+}
 
 
 
@@ -161,7 +183,38 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let finalProduct = 0;
+
+  const rowsCount = matrix.length;
+  const columnsCount = matrix[0].length;
+
+  // console.log(rowsCount);
+  // console.log(columnsCount)
+
+  for (let i = 0; i < rowsCount; i++) {
+    let row = matrix[i];
+    for (let x = 0; x < columnsCount - 3; x++) {
+      // 0 - 1 - 2 - 3
+      // 1 - 2 - 3 - 4
+      let rowProduct = row[x] * row[x + 1] * row[x + 2] * row[x + 3];
+      if (rowProduct > finalProduct) {
+        finalProduct = rowProduct;
+      }
+    }
+  }
+
+  for (let i = 0; i < columnsCount; i++) {
+    for (let e = 0; e < rowsCount - 3; e++) {
+      let columnProduct = matrix[e][i] * matrix[e + 1][i] * matrix[e + 2][i] * matrix[e + 3][i];
+      if (columnProduct > finalProduct) {
+        finalProduct = columnProduct;
+      }
+    }
+  }
+
+  return finalProduct;
+}
 
 
 
